@@ -1,0 +1,60 @@
+classDiagram
+    class Owner {
+        +String name
+        +String email
+        +List~Pet~ pets
+        +addPet(pet) void
+        +removePet(pet) void
+    }
+
+    class Pet {
+        +String name
+        +String species
+        +String breed
+        +int age
+        +updateInfo(name, species, breed, age) void
+    }
+
+    class Task {
+        +String name
+        +int duration
+        +String priority
+        +bool completed
+        +updateName(name) void
+        +updateDuration(duration) void
+        +updatePriority(priority) void
+        +markCompleted() void
+    }
+
+    class Constraint {
+        +String name
+        +String type
+        +String value
+        +updateName(name) void
+    }
+
+    class Schedule {
+        +String date
+        +List~Task~ tasks
+        +List~Constraint~ constraints
+        +addTask(task) void
+        +removeTask(task) void
+        +markCompleted(task) void
+        +addConstraint(constraint) void
+        +removeConstraint(constraint) void
+        +generatePlan() DailyPlan
+    }
+
+    class DailyPlan {
+        +List~Task~ orderedTasks
+        +String reasoning
+        +display() void
+        +explainReasoning() String
+    }
+
+    Owner "1" --> "*" Pet : owns
+    Owner "1" --> "1" Schedule : manages
+    Schedule "1" --> "*" Task : contains
+    Schedule "1" --> "*" Constraint : applies
+    Schedule ..> DailyPlan : generates
+    Task "*" --> "1" Pet : assigned to
