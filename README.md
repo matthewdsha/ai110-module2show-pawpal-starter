@@ -54,6 +54,24 @@ Paste a sample of your app's CLI or Streamlit output here so a reader can see wh
 #   ...
 ```
 
+========================================
+       TODAY'S SCHEDULE
+========================================
+Daily Plan - 4 task(s)
+----------------------------------------
+1. [ ] 08:00 AM  Morning Walk (Buddy) | 30 min | HIGH
+2. [ ] 08:30 AM  Feed Buddy (Buddy) | 10 min | HIGH
+3. [ ] 08:40 AM  Playtime (Luna) | 20 min | MEDIUM
+4. [ ] 09:00 AM  Vet Checkup (Luna) | 60 min | LOW
+
+Plan for 2026-06-23 - 4 pending task(s):
+  1. 08:00 AM  Morning Walk (Buddy) - HIGH, 30 min
+  2. 08:30 AM  Feed Buddy (Buddy) - HIGH, 10 min
+  3. 08:40 AM  Playtime (Luna) - MEDIUM, 20 min
+  4. 09:00 AM  Vet Checkup (Luna) - LOW, 60 min
+Constraints applied:
+  - No early tasks (no_tasks_before): 08:00
+
 ## 🧪 Testing PawPal+
 
 ```bash
@@ -76,10 +94,10 @@ Sample test output:
 
 | Feature | Method(s) | Notes |
 |---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Task sorting | Scheduler.sort_by_time(), Scheduler.generate_plan() | Sorts based off time, priority, and duration (in generate_plan) |
+| Filtering | Scheduler.get_pending_tasks(), Scheduler.filter_by_pet_name(), Scheduler.get_tasks_for_pet(), Scheduler.get_tasks_by_priority(), Scheduler.get_tasks_by_status() | Several methods filter the scheduler's task list using pet names, priority level, or completion |
+| Conflict handling | Scheduler.detect_conflicts(), Scheduler.generate_plan() | checks every pair of time-assigned tasks for overlap and checks constraints in generate_plan |
+| Recurring tasks | Scheduler.is_due_today(), Scheduler.mark_complete(), Scheduler.spawn_next_occurrence() | is_due_today influences what appears in each day's plan, checks for daily and weekly tasks as well as repeating tasks |
 
 ## 📸 Demo Walkthrough
 
