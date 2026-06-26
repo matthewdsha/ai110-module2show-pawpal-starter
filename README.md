@@ -76,17 +76,21 @@ Constraints applied:
 
 ```bash
 # Run the full test suite:
-pytest
+python -m pytest
 
-# Run with coverage:
-pytest --cov
-```
+The suite covers task sorting, recurrence spawning and due-date gating, conflict and constraint detection, and pet-to-task wiring.
+
+I would say my confidence level would be 4/5 stars. The tests cover a lot of topics, which gives me a lot of confidence in the system's reliability. However, after reviewing, I realized htere was not much testing for the display of the daily plan or any constraint updates. While a lot of the system was tested, there are a few outliers still missing.
 
 Sample test output:
 
-```
-# Paste your pytest output here
-```
+rootdir: C:\Users\matth\ai110-module2show-pawpal-starter
+plugins: anyio-4.14.0
+collected 41 items                                                                                                                                                             
+
+tests\test_pawpal.py .........................................                                                                                                           [100%]
+
+============================================================================= 41 passed in 0.08s ==============================================================================
 
 ## 📐 Smarter Scheduling
 
