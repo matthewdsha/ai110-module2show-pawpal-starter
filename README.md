@@ -107,10 +107,24 @@ tests\test_pawpal.py .........................................                  
 
 Describe your app in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Enter and save owner name and email
+2. Add a pet profile (name, species, breed, age)
+3. Add a task for the pet with duration, priority, frequency, and optional start time
+4. Optionally add more tasks or another pet task
+5. Add a scheduling constraint such as NO_TASKS_AFTER, NO_TASKS_BEFORE, TIME_BLOCK, or MAX_DURATION
+6. Click “Generate schedule”
+7. Review the generated plan and any conflict or constraint warnings
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+
+## Features:
+Add pets with profile details
+Add pet tasks with duration, priority, frequency, optional start time, and description
+Track recurring tasks for daily and weekly schedules
+Select pending tasks due today based on recurrence rules
+Sort tasks by priority, then duration, then name
+Assign start times sequentially beginning at 8:00 AM or after a NO_TASKS_BEFORE constraint
+Detect overlapping task time windows
+Enforce constraints
+Filter tasks by pet, priority, or completion status
+Display schedule chronologically with assigned times

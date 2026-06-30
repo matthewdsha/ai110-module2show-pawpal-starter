@@ -310,7 +310,8 @@ class Scheduler:
         h, m = map(int, no_before.value.split(":")) if no_before else (8, 0)
         current = datetime.combine(self.date, time(h, m))
         for task in sorted_tasks:
-            task.start_time = current.time()
+            if task.start_time is None:
+                task.start_time = current.time()
             current += timedelta(minutes=task.duration)
 
         # --- Conflict detection ---

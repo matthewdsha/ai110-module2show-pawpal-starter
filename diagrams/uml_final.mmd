@@ -1,0 +1,85 @@
+classDiagram
+    class Owner {
+        +String name
+        +String email
+        +List~Pet~ pets
+        +Scheduler? scheduler
+        +add_pet(pet) void
+        +remove_pet(pet) void
+        +get_all_tasks() List~Task~
+        +get_all_pending_tasks() List~Task~
+    }
+
+    class Pet {
+        +String name
+        +String species
+        +String breed
+        +int age
+        +List~Task~ tasks
+        +update_info(name, species, breed, age) void
+        +add_task(task) void
+        +remove_task(task) void
+        +get_pending_tasks() List~Task~
+    }
+
+    class Task {
+        +String name
+        +int duration
+        +Priority priority
+        +String description
+        +Frequency frequency
+        +Pet? pet
+        +bool completed
+        +time? start_time
+        +date? last_completed
+        +date? due_date
+        +update_name(name) void
+        +update_duration(duration) void
+        +update_priority(priority) void
+        +mark_completed(on_date) void
+    }
+
+    class Constraint {
+        +String name
+        +ConstraintType type
+        +String value
+        +update_name(name) void
+        +update_type(type) void
+        +update_value(value) void
+    }
+
+    class Scheduler {
+        +date date
+        +List~Task~ tasks
+        +List~Constraint~ constraints
+        +load_tasks_from_owner(owner) void
+        +add_task(task) void
+        +remove_task(task) void
+        +mark_completed(task) Task?
+        +_spawn_next_occurrence(task, due_date) Task
+        +add_constraint(constraint) void
+        +remove_constraint(constraint) void
+        +get_pending_tasks() List~Task~
+        +sort_by_time() List~Task~
+        +detect_conflicts() List~String~
+        +filter_by_pet_name(name) List~Task~
+        +get_tasks_for_pet(pet) List~Task~
+        +get_tasks_by_priority(priority) List~Task~
+        +get_tasks_by_status(completed) List~Task~
+        +generate_plan() DailyPlan
+    }
+
+    class DailyPlan {
+        +List~Task~ ordered_tasks
+        +String reasoning
+        +List~String~ conflicts
+        +display() void
+        +explain_reasoning() String
+    }
+
+    Owner "1" --> "*" Pet : owns
+    Owner "1" --> "0..1" Scheduler : uses
+    Pet "1" --> "*" Task : has
+    Scheduler "1" --> "*" Task : manages
+    Scheduler "1" --> "*" Constraint : applies
+    Scheduler ..> DailyPlan : generates
